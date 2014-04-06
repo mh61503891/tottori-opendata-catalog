@@ -1,29 +1,39 @@
-# Tottori::Opendata::Catalog
+[![Version](https://img.shields.io/gem/v/cardamon.svg)](https://rubygems.org/gems/tottori-opendata-catalog)
 
-TODO: Write a gem description
+## TottoriOpenDataCatalog
 
-## Installation
+This gem provides an API and a CLI of Open Data Catalog of Tottori Prefecture http://db.pref.tottori.jp/opendataResearch.nsf to generate a machine-readable catalog.
 
-Add this line to your application's Gemfile:
+### Installation
 
-    gem 'tottori-opendata-catalog'
+    $ gem install cardamon
 
-And then execute:
+### Synopsis
 
-    $ bundle
+#### API
 
-Or install it yourself as:
+``` ruby
+require 'tottori-opendata-catalog'
+# TottoriOpenDataCatalog.get returns a nested ruby's object.
+puts TottoriOpenDataCatalog.get
+```
 
-    $ gem install tottori-opendata-catalog
+``` ruby
+require 'tottori-opendata-catalog'
+# without caching using a local strage (/tmp).
+puts TottoriOpenDataCatalog.get(cache:false)
+```
 
-## Usage
+#### CLI
 
-TODO: Write usage instructions here
+``` sh
+$ tottori-opendata-catalog csv > catalog.csv
+```
 
-## Contributing
+``` sh
+$ tottori-opendata-catalog json > catalog.json
+```
 
-1. Fork it ( https://github.com/[my-github-username]/tottori-opendata-catalog/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+``` sh
+$ tottori-opendata-catalog json --no-cache > catalog.json
+```
