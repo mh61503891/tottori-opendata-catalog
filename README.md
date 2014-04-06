@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/gem/v/cardamon.svg)](https://rubygems.org/gems/tottori-opendata-catalog)
+[![Version](https://img.shields.io/gem/v/tottori-opendata-catalog.svg)](https://rubygems.org/gems/tottori-opendata-catalog)
 
 ## TottoriOpenDataCatalog
 
