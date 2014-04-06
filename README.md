@@ -6,7 +6,7 @@ This gem provides an API and a CLI of Open Data Catalog of Tottori Prefecture ht
 
 ### Installation
 
-    $ gem install cardamon
+    $ gem install tottori-opendata-catalog
 
 ### Synopsis
 
