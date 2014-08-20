@@ -87,8 +87,10 @@ module TottoriOpenDataCatalog
           updated_at.gsub!('　', ' ')
           updated_at.tr!('０-９', '0-9')
         end
-        date, repeat_rule_description = updated_at.split
-        year, month, day = date.split('.')
+        if !updated_at.gsub(' ', '').empty?
+          date, repeat_rule_description = updated_at.split
+          year, month, day = date.split('.')
+        end
         item[:year]  = (year  ? year.to_i  : nil)
         item[:month] = (month ? month.to_i : nil)
         item[:day]   = (day   ? day.to_i   : nil)
