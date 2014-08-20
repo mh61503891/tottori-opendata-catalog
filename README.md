@@ -20,7 +20,7 @@ puts TottoriOpenDataCatalog.get
 
 ``` ruby
 require 'tottori-opendata-catalog'
-# without caching using a local strage (/tmp).
+# without caching which uses a local storage (/tmp).
 puts TottoriOpenDataCatalog.get(cache:false)
 ```
 
