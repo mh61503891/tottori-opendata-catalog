@@ -1,23 +1,25 @@
 require 'spec_helper'
-include TottoriOpenDataCatalog
-include TottoriOpenDataCatalog::Proxy
 
 describe TottoriOpenDataCatalog::Parser do
 
+  def index_url
+    TottoriOpenDataCatalog::Proxy::INDEX_URL
+  end
+
   def parse_index
-    @index ||= Parser.parse_index(Net.get(INDEX_URL))
+    @index ||= TottoriOpenDataCatalog::Parser.parse_index(TottoriOpenDataCatalog::Net.get(index_url))
   end
 
   def parse_list(path)
-    url = File.join(File.dirname(INDEX_URL), path)
+    url = File.join(File.dirname(index_url), path)
     @lists ||= {}
-    @lists[url] ||= Parser.parse_list(Net.get(url))
+    @lists[url] ||= TottoriOpenDataCatalog::Parser.parse_list(TottoriOpenDataCatalog::Net.get(url))
   end
 
   def parse_record(path)
-    url = File.join(File.dirname(INDEX_URL), path)
+    url = File.join(File.dirname(index_url), path)
     @records ||= {}
-    @records[url] ||= Parser.parse_record(Net.get(url))
+    @records[url] ||= TottoriOpenDataCatalog::Parser.parse_record(TottoriOpenDataCatalog::Net.get(url))
   end
 
   describe '#parse_index' do
