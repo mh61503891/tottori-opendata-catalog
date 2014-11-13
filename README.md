@@ -37,3 +37,16 @@ $ tottori-opendata-catalog json > catalog.json
 ``` sh
 $ tottori-opendata-catalog json --no-cache > catalog.json
 ```
+
+### Development
+
+#### Testing
+
+```sh
+$ bundle exec rake spec
+```
+#### Updating example/example.csv
+
+```
+$ bundle exec ruby bin/tottori-opendata-catalog csv > example/example.csv
+```
