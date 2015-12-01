@@ -3,16 +3,16 @@ require 'nokogiri'
 module TottoriOpenDataCatalog
   module Parser
     class << self
-      def parse_index(string)
-        doc = Nokogiri::HTML(string, nil, 'Shift_JIS')
+      def parse_index(html)
+        doc = Nokogiri::HTML(html, nil, 'Shift_JIS')
         # collect
         name = doc.xpath('//title').text.strip
         anchors = doc.xpath('//a')
-        categories = anchors.select do |a|
+        categories = anchors.select { |a|
           a[:href].include?('forweb_bunrui')
-        end.map do |a|
+        }.map { |a|
           { name: a.text.strip, link: a[:href].strip }
-        end
+        }
         items = {
           name: name,
           categories: categories
@@ -20,12 +20,12 @@ module TottoriOpenDataCatalog
         items
       end
 
-      def parse_list(string)
-        doc = Nokogiri::HTML(string, nil, 'Shift_JIS')
+      def parse_list(html)
+        doc = Nokogiri::HTML(html, nil, 'Shift_JIS')
         # collect
         items = doc.xpath('//table[@id="contentslist"]/tr[position() > 1]').map do |tr|
           tds = tr.children
-          item = {
+          {
             name: tds[0].text.strip,
             link: tds[0].children[0][:href],
             formats: tds[1].text.strip,
@@ -41,10 +41,6 @@ module TottoriOpenDataCatalog
             item[:formats] = item[:formats].split
           end
         end
-        target = items.find do |item|
-          item[:link] == 'list1_forweb/10EE759AAD20B54749257C68000A2845?OpenDocument'
-        end
-        target[:formats] = ['PDF'] if target
         items
       end
 
@@ -123,7 +119,7 @@ module TottoriOpenDataCatalog
             { frequency: 'budgeting', interval: nil }
           else
             { frequency: nil, interval: nil }
-        end)
+          end)
         item[:repeat_rule].merge!(description: repeat_rule_description)
         # 繰り返しルールの説明が有るのに周期が無い場合は例外をスロー
         if !item[:repeat_rule][:description].nil? && item[:repeat_rule][:frequency].nil?
