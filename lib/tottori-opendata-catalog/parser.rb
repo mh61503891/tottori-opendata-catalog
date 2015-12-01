@@ -41,7 +41,6 @@ module TottoriOpenDataCatalog
             item[:formats] = item[:formats].split
           end
         end
-        # HACK: change format from Notes to PDF.
         target = items.find do |item|
           item[:link] == 'list1_forweb/10EE759AAD20B54749257C68000A2845?OpenDocument'
         end
