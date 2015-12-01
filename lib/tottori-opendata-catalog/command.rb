@@ -1,28 +1,25 @@
 require 'tottori-opendata-catalog/proxy'
 
 module TottoriOpenDataCatalog
-
   module Command
-
     class << self
-
       def to_json(cache:true)
         require 'json'
-        JSON.pretty_generate(TottoriOpenDataCatalog::Proxy.get(cache:cache))
+        JSON.pretty_generate(TottoriOpenDataCatalog::Proxy.get(cache: cache))
       end
 
       def to_csv(cache:true)
         require 'csv'
         CSV(csv = '') do |line|
-          data = TottoriOpenDataCatalog::Proxy.get(cache:cache)
-          line << %w{
+          data = TottoriOpenDataCatalog::Proxy.get(cache: cache)
+          line << %w(
             category_name
             resource_name formats department division tags
             redistribution_allowed commercial_use_allowed
             provider tel description comment
             year month day
             repeat_rule_frequency repeat_rule_interval repeat_rule_description
-          }
+          )
           data[:categories].each do |category|
             category[:resources].each do |resource|
               row = []
@@ -48,10 +45,8 @@ module TottoriOpenDataCatalog
             end
           end
         end
-        return csv
+        csv
       end
     end
-
   end
-
 end

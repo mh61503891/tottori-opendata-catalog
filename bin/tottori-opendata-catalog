@@ -4,14 +4,14 @@ require 'tottori-opendata-catalog'
 require 'thor'
 
 class CLI < Thor
-  option :cache, {type: :boolean, default:true}
+  option :cache, type: :boolean, default: true
   desc 'csv', 'print a csv file'
   def csv
-    puts TottoriOpenDataCatalog::Command.to_csv(cache:options[:cache])
+    puts TottoriOpenDataCatalog::Command.to_csv(cache: options[:cache])
   end
   desc 'json', 'print a json file'
   def json
-    puts TottoriOpenDataCatalog::Command.to_json(cache:options[:cache])
+    puts TottoriOpenDataCatalog::Command.to_json(cache: options[:cache])
   end
 end
 

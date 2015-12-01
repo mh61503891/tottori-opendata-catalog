@@ -5,9 +5,7 @@ require 'tottori-opendata-catalog/proxy'
 require 'tottori-opendata-catalog/command'
 
 module TottoriOpenDataCatalog
-
   def self.get(cache:true)
-    TottoriOpenDataCatalog::Proxy.get(cache:cache)
+    TottoriOpenDataCatalog::Proxy.get(cache: cache)
   end
-
 end

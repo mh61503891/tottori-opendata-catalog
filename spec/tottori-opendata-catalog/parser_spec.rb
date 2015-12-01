@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe TottoriOpenDataCatalog::Parser do
-
   def index_url
     TottoriOpenDataCatalog::Proxy::INDEX_URL
   end
@@ -23,7 +22,6 @@ describe TottoriOpenDataCatalog::Parser do
   end
 
   describe '#parse_index' do
-
     it 'does not raise errors.' do
       expect do
         parse_index
@@ -39,11 +37,9 @@ describe TottoriOpenDataCatalog::Parser do
         expect(category[:link].blank?).to be false
       end
     end
-
   end
 
   describe '#parse_list' do
-
     it 'does not raise errors.' do
       parse_index[:categories].each do |list|
         expect do
@@ -60,11 +56,9 @@ describe TottoriOpenDataCatalog::Parser do
         end
       end
     end
-
   end
 
   describe '#parse_record' do
-
     it 'does not raise errors.' do
       parse_index[:categories].each do |list|
         parse_list(list[:link]).each do |record|
@@ -76,9 +70,7 @@ describe TottoriOpenDataCatalog::Parser do
     end
 
     it 'returns valid data.' do
-      # TODO ;)
+      # TODO: ;)
     end
-
   end
-
 end
