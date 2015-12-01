@@ -114,6 +114,8 @@ module TottoriOpenDataCatalog
             { frequency: 'as_needed', interval: nil }
           when /不定期/
             { frequency: 'unscheduled', interval: nil }
+          when /予算編成時/
+            { frequency: 'budgeting', interval: nil }
           else
             { frequency: nil, interval: nil }
         end)
