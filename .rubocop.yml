@@ -1,0 +1,6 @@
+Style/BlockDelimiters:
+  AutoCorrect: false
+Style/AsciiComments:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
