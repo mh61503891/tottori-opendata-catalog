@@ -75,8 +75,14 @@ module TottoriOpenDataCatalog
         if item[:redistribution_allowed] == '○'
           item[:redistribution_allowed] = true
         end
+        if item[:redistribution_allowed] == '×'
+          item[:redistribution_allowed] = false
+        end
         if item[:commercial_use_allowed] == '○'
           item[:commercial_use_allowed] = true
+        end
+        if item[:commercial_use_allowed] == '×'
+          item[:commercial_use_allowed] = false
         end
         updated_at = item.delete(:updated_at)
         if updated_at
