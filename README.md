@@ -22,7 +22,7 @@ require 'tottori-opendata-catalog'
 puts TottoriOpenDataCatalog.get
 ```
 
-Example2: Without cacheing
+Example2: Without caching
 
 ``` ruby
 require 'tottori-opendata-catalog'
